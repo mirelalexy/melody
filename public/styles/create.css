@@ -1,0 +1,61 @@
+@font-face {
+    font-family: garet;
+    src: url("/fonts/garet-regular.ttf");
+}
+
+.main-container{
+    margin-left: 115px;
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-right: 115px;
+}
+
+p{
+    color: #4e4144;
+    font-family: garet;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+span{
+    font-weight: 400;
+}
+
+.btn-grad-save {
+    background-image: linear-gradient(to right, #c97a44 0%, #8f797d  51%, #c97a44  100%);
+    padding: 15px 30px;
+    text-align: center;
+    font-family: garet;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    font-size: 1.2rem;            
+    display: block;
+    border: 0px;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 91.5%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+  }
+
+.btn-grad-save:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.selectFile{
+    margin-bottom: 10px;
+    color: #4e4144;
+    font-family: garet;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.title-input:focus {
+    outline: none;
+}

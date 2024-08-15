@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/images/favicon.png">
+    <title>melody</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="intro">
+            <h1>melody</h1>
+            <p>hub curated by <span>AT</span>, where enthusiasts come together to share and discuss all things music</p>
+            <form action="/home" method="GET">
+                <input class="btn-grad" type="submit" value="view posts">
+            </form>
+
+            <% let currentDate = new Date();
+            let currentYear = currentDate.getFullYear();
+            %>
+  
+            <p class="footerElement credits">art by <span>MOYGOGO</span></p>
+            <p class="footerElement copyright">copyright <span>AT</span> © <%= currentYear %></p>
+        </div>
+
+        <div class="art">
+            <img src="/images/art.jpeg">
+        </div>
+    </div>
+</body>
+</html>

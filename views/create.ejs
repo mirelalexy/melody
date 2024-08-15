@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/create.css">
+    <link rel="icon" href="/images/favicon.png">
+    <title>melody | home</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <div class="main-container">
+        <form action="/home" method="POST" enctype="multipart/form-data"> <!-- access https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean if you need to remember -->
+            <p>Title: <input class="title-input form-control" type="text" name="postTitle" required></p>
+            <p>Add cover: <input class="form-control" type="file" name="image" accept="image/*"></p>
+            <p>Write your post here: <textarea class="form-control" name="postText" rows="10" required></textarea></p>
+            <input class="btn-grad-save" type="submit" value="save">
+        </form>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/97d77012f0.js" crossorigin="anonymous"></script>
+</body>
+</html>

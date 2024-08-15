@@ -1,0 +1,106 @@
+@font-face {
+    font-family: paradise;
+    src: url("/fonts/birds-of-paradise.ttf");
+}
+
+@font-face {
+    font-family: garet;
+    src: url("/fonts/garet-regular.ttf");
+}
+
+@font-face {
+    font-family: poppins;
+    src: url("/fonts/poppins-regular.ttf");
+}
+
+
+body{
+    background: #fafafa;
+}
+
+.blogName{
+    font-family: paradise;
+    color: #d76d52;
+    font-size: 4rem;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #c97a44 0%, #8f797d  51%, #c97a44  100%);
+    padding: 15px 30px;
+    text-align: center;
+    font-family: garet;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    font-size: 1.2rem;            
+    display: block;
+    border: 0px;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.posts-container{
+    margin-top: 50px;
+    margin-left: 107px;
+    margin-right: 107px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post{
+    width: 350px;
+    height: 469px;
+    background-color: #f4e4d5;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.postImage{
+    width: 350px;
+    height: 230px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.category{
+    text-decoration: underline;
+    font-family: poppins;
+    font-size: 1.3rem;
+    color: #4e4144;
+    font-weight: bold;
+}
+
+.postTitle{
+    font-family: garet;
+    font-size: 1.4rem;
+    color: #4e4144;
+}
+
+.postDate{
+    font-family: garet;
+    color: #8f797d;
+    font-weight: bold;
+}
+
+.postContent{
+    margin: 20px 25px 20px 25px;
+}
+
+.fa-pencil{
+    margin-left: 40%;
+    margin-right: 6%;
+}
+
+.icons{
+    cursor: pointer;
+    color: #4e4144;
+    font-size: 1.1rem;
+}

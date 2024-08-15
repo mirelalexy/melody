@@ -1,0 +1,83 @@
+@font-face {
+    font-family: paradise;
+    src: url("/fonts/birds-of-paradise.ttf");
+}
+
+@font-face {
+    font-family: garet;
+    src: url("/fonts/garet-regular.ttf");
+}
+
+body{
+    margin: 0px;
+    min-height: 100vh;
+    background: #f4e4d5;
+    overflow: hidden;
+   
+}
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.intro{
+    padding-left: 75px;
+    padding-top: 75px;
+}
+.intro>h1{
+    font-family: paradise;
+    color: #d76d52;
+    font-size: 7rem;
+    margin-bottom: 0px;
+    padding-left: 15px;
+}
+
+p{
+    color: #c97a44;
+    font-weight: 500px;
+    font-family: garet;
+    font-size: 1.5rem;
+}
+
+p>span{
+    font-weight: bolder;
+}
+
+.footerElement{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.credits{
+    margin-bottom: 0px;
+}
+
+.copyright{
+    margin-top: 0px;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #c97a44 0%, #8f797d  51%, #c97a44  100%);
+    padding: 15px 45px;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    text-align: center;
+    font-family: garet;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    font-size: 1.2rem;            
+    box-shadow: 0 0 20px #eee;
+    display: block;
+    border: 0px;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+ 
