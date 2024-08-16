@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "melody",
   "version": "1.0.0",
-  "description": "a wellness blog to test knowledge of js, node.js, express.js and ejs ",
+  "description": "a music blog to test knowledge of js, node.js, express.js and ejs",
   "main": "index.js",
   "type": "module",
   "scripts": {

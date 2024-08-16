@@ -44,6 +44,7 @@ app.post("/home", upload.single('image'), (req, res) => {
     }
 
     posts.push(newPost);
+    console.log("Posts array:", posts);
     res.redirect("/home");
 });
 
@@ -58,6 +59,49 @@ app.delete("/delete/:id", (req, res) => {
     } else {
         res.status(404).send("Post not found");
     }
+});
+
+app.get("/edit/:id", (req, res) => {
+    const postId = req.params.id;
+    console.log("Requested postId:", postId);
+    console.log("Posts array:", posts); // checking if posts array is populated
+    const post = posts.find(post => post.id === postId); // searching by ID again
+
+    if (post) {
+        res.render("edit.ejs", { post: post }); // create.ejs will be populated with the data of the post with that ID
+    } else {
+        res.status(404).send("Post not found");
+    }
+});
+
+app.post("/edit/:id", upload.single('image'), (req, res) => {
+    const postId = req.params.id;
+    const {postTitle, postText} = req.body;
+    const imagePath = req.file ? req.file.path : ''; // Handle optional image upload
+
+        // Find the index of the post to be updated
+        const postIndex = posts.findIndex(post => post.id === postId);
+
+    console.log("postIndex:", postIndex);
+    console.log("postTitle:", postTitle);
+    console.log("postText:", postText);
+    console.log("imagePath:", imagePath);
+    console.log("postId:", postId);
+
+    
+    if (postIndex !== -1) {
+        // Update the post with new data
+        posts[postIndex] = {
+            id: postId,
+            title: postTitle,
+            text: postText,
+            image: imagePath || posts[postIndex].image, // Use existing image if no new one is provided
+            date: posts[postIndex].date, // Preserve the original date
+        };
+    }
+    
+    console.log("Posts array:", posts);
+    res.redirect("/home");
 });
 
 app.listen(port, () => {

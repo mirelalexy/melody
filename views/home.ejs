@@ -49,7 +49,7 @@
           <p class="category">POP</p>
           <p class="postTitle"><%= post.title %></p>
           <span class="postDate"><%= post.date %></span>
-          <i class="fa-solid fa-pencil icons"></i>
+          <i class="fa-solid fa-pencil icons" onclick="editPost('<%= post.id %>')"></i>
           <i class="fa-solid fa-trash icons" onclick="deletePost('<%= post.id %>')"></i>
         </div>      
       </div>
@@ -57,6 +57,7 @@
     </div>
 
     <script src="/deletePost.js"></script>
+    <script src="/editPost.js"></script>
     <script src="https://kit.fontawesome.com/97d77012f0.js" crossorigin="anonymous"></script>
 </body>
 </html>
