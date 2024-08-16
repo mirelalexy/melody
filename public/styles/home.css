@@ -52,7 +52,9 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    column-gap: 125px;
+    row-gap: 20px;
 }
 
 .post{
@@ -60,7 +62,6 @@ body{
     height: 469px;
     background-color: #f4e4d5;
     border-radius: 20px;
-    margin-bottom: 20px;
 }
 
 .postImage{
@@ -95,7 +96,7 @@ body{
 }
 
 .fa-pencil{
-    margin-left: 40%;
+    margin-left: 50%;
     margin-right: 6%;
 }
 
