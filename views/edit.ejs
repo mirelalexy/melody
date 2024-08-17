@@ -13,14 +13,12 @@
     <%- include("partials/header.ejs") %>
 
     <div class="main-container">
-        <form action="/edit/:id" method="GET" enctype="multipart/form-data"> <!-- access https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean if you need to remember -->
+        <form action="/edit/<%= post.id %>" method="POST" enctype="multipart/form-data"> <!-- access https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean if you need to remember -->
             <!-- hidden field to store the post ID (to edit posts) -->
             <input type="hidden" name="postId" value="<%= post.id %>">
             <p>Title: <input class="title-input form-control" type="text" name="postTitle" required value="<%= post.title %>"></p>
             <p>Add cover: <input class="form-control" type="file" name="image" accept="image/*"></p>
             <p>Write your post here: <textarea class="form-control" name="postText" rows="10" required><%= post.text %></textarea></p>
-        </form> 
-        <form action="/edit/:id" method="POST">
             <input class="btn-grad-save" type="submit" value="save">
         </form>
     </div>

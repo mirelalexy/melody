@@ -6,12 +6,12 @@ const app = express();
 const port = 3000;
 const upload = multer({ dest: 'images/' }); // the folder where we save images on the server
 
-// array to store posts in memory
+// array to store posts in memory (this version does not have a database)
 let posts = [];
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-app.use('/images', express.static('images'));
+app.use('/images', express.static("images"));
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
@@ -28,7 +28,7 @@ app.get("/create", (req, res) => {
 app.post("/home", upload.single('image'), (req, res) => {
     const {postTitle, postText} = req.body;
     const imagePath = req.file.path;
-    const postId = uuidv4();
+    const postId = uuidv4(); // generate UUID
 
     console.log("postTitle:", postTitle);
     console.log("postText:", postText);
@@ -40,7 +40,7 @@ app.post("/home", upload.single('image'), (req, res) => {
         title: postTitle,
         text: postText,
         image: imagePath,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleDateString(), // get date
     }
 
     posts.push(newPost);
@@ -61,47 +61,44 @@ app.delete("/delete/:id", (req, res) => {
     }
 });
 
+// load post data when user edits
 app.get("/edit/:id", (req, res) => {
     const postId = req.params.id;
     console.log("Requested postId:", postId);
-    console.log("Posts array:", posts); // checking if posts array is populated
-    const post = posts.find(post => post.id === postId); // searching by ID again
+    const post = posts.find(post => post.id === postId); // search by ID to retrieve data
 
     if (post) {
-        res.render("edit.ejs", { post: post }); // create.ejs will be populated with the data of the post with that ID
+        res.render("edit.ejs", { post: post }); // edit.ejs is populated with the data of the post with that ID
     } else {
         res.status(404).send("Post not found");
     }
 });
 
+// handle form submission and update the post
 app.post("/edit/:id", upload.single('image'), (req, res) => {
     const postId = req.params.id;
-    const {postTitle, postText} = req.body;
-    const imagePath = req.file ? req.file.path : ''; // Handle optional image upload
+    const { postTitle, postText } = req.body; // get the new title and text
+    const imagePath = req.file ? req.file.path : ''; // handle optional image upload
 
-        // Find the index of the post to be updated
-        const postIndex = posts.findIndex(post => post.id === postId);
-
+    // find the index of the post to be updated
+    const postIndex = posts.findIndex(post => post.id === postId);
     console.log("postIndex:", postIndex);
-    console.log("postTitle:", postTitle);
-    console.log("postText:", postText);
-    console.log("imagePath:", imagePath);
-    console.log("postId:", postId);
 
-    
     if (postIndex !== -1) {
-        // Update the post with new data
+        // update the post with the new data
         posts[postIndex] = {
             id: postId,
-            title: postTitle,
-            text: postText,
-            image: imagePath || posts[postIndex].image, // Use existing image if no new one is provided
-            date: posts[postIndex].date, // Preserve the original date
+            title: postTitle || posts[postIndex].title, // use new or keep the old one if left empty by user
+            text: postText || posts[postIndex].text,
+            image: imagePath || posts[postIndex].image,
+            date: posts[postIndex].date, // preserve the original date
         };
+
+        console.log("Updated posts array:", posts);
+        res.redirect("/home");
+    } else {
+        res.status(404).send("Post not found");
     }
-    
-    console.log("Posts array:", posts);
-    res.redirect("/home");
 });
 
 app.listen(port, () => {
