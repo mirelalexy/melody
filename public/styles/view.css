@@ -1,0 +1,60 @@
+@font-face {
+    font-family: garet;
+    src: url("/fonts/garet-regular.ttf");
+}
+
+@font-face {
+    font-family: garet-heavy;
+    src: url("/fonts/garet-heavy.ttf");
+}
+
+@font-face {
+    font-family: poppins;
+    src: url("/fonts/poppins-regular.ttf");
+}
+
+.view-main-container{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 773px;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+    width: 773px;
+    height: 285px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.view-category{
+    text-decoration: underline;
+    font-family: poppins;
+    font-size: 1.8rem;
+    color: #4e4144;
+    font-weight: bold;
+    justify-self: start;
+    left: 20%;
+    margin-top: 15px;
+}
+
+h1{
+    font-family: garet-heavy;
+    color: #3a1a1f;
+}
+
+.postDate{
+    position: relative;
+    left: 89%;
+    margin-bottom: 25px;
+}
+
+.postText{
+    font-family: poppins;
+    white-space: pre-line;
+}

@@ -80,9 +80,14 @@ body{
 }
 
 .postTitle{
-    font-family: garet;
+    font-family: poppins;
     font-size: 1.4rem;
     color: #4e4144;
+}
+
+.postTitle:hover{
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .postDate{

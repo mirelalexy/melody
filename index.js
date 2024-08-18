@@ -30,11 +30,6 @@ app.post("/home", upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
     const postId = uuidv4(); // generate UUID
 
-    console.log("postTitle:", postTitle);
-    console.log("postText:", postText);
-    console.log("imagePath:", imagePath);
-    console.log("postId:", postId);
-
     const newPost = {
         id: postId,
         title: postTitle,
@@ -44,7 +39,7 @@ app.post("/home", upload.single('image'), (req, res) => {
     }
 
     posts.push(newPost);
-    console.log("Posts array:", posts);
+    // console.log("Posts array:", posts);
     res.redirect("/home");
 });
 
@@ -64,7 +59,7 @@ app.delete("/delete/:id", (req, res) => {
 // load post data when user edits
 app.get("/edit/:id", (req, res) => {
     const postId = req.params.id;
-    console.log("Requested postId:", postId);
+    // console.log("Requested postId:", postId);
     const post = posts.find(post => post.id === postId); // search by ID to retrieve data
 
     if (post) {
@@ -82,7 +77,6 @@ app.post("/edit/:id", upload.single('image'), (req, res) => {
 
     // find the index of the post to be updated
     const postIndex = posts.findIndex(post => post.id === postId);
-    console.log("postIndex:", postIndex);
 
     if (postIndex !== -1) {
         // update the post with the new data
@@ -94,8 +88,19 @@ app.post("/edit/:id", upload.single('image'), (req, res) => {
             date: posts[postIndex].date, // preserve the original date
         };
 
-        console.log("Updated posts array:", posts);
+        // console.log("Updated posts array:", posts);
         res.redirect("/home");
+    } else {
+        res.status(404).send("Post not found");
+    }
+});
+
+app.get("/view/:id", (req, res) => {
+    const postId = req.params.id;
+    const post = posts.find(post => post.id === postId);
+
+    if (post) {
+        res.render("view.ejs", { post: post });
     } else {
         res.status(404).send("Post not found");
     }
